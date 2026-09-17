@@ -44,7 +44,7 @@ resource "aws_ec2_instance_state" "main" {
 
 
 resource "aws_ami_from_instance" "main" {
-  name               = "${var.project}-${var.environment}-${var.component}"
+  name               = "${var.project}-${var.environment}-${var.component}-${var.app_version}-${aws_instance.main.id}"
   source_instance_id = aws_instance.main.id
   depends_on = [aws_ec2_instance_state.main]
 
@@ -171,7 +171,7 @@ resource "aws_autoscaling_policy" "main" {
 
 # This depends on target group
 resource "aws_lb_listener_rule" "main" {
-  listener_arn = local.lb_listener_arn
+  listener_arn = local.alb_listener_arn
   priority     = var.rule_priority
 
   action {

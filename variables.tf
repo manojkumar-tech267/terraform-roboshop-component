@@ -23,5 +23,5 @@ variable "rule_priority" {
 }
 
 variable "domain_name" {
-    default = "cloudwithmanoj.online"
+    default = "cloudwithmanoj.shop"
 }
